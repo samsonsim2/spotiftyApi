@@ -33,6 +33,7 @@ export const Artist = () => {
       const { data } = await axios(fetchUrl, {
         method: 'POST',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/x-www-form-urlencoded',
           Authorization:
             'Basic ' +
@@ -54,6 +55,7 @@ export const Artist = () => {
       } = await axios('https://api.spotify.com/v1/search?type=artist&q=A', {
         method: 'GET',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           Accept: 'application/json',
           Authorization: 'Bearer ' + token,
