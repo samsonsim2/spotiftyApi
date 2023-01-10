@@ -51,12 +51,12 @@ export const Artist = () => {
         data: {
           artists: { items: artistList },
         },
-      } = await axios('https://api.spotify.com/v1/search?type=artist&q=A', {
+      } = await axios('https://api.spotify.com/v1/search?type=artist&q=Adele', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          Authorization: 'Bearer ' + token,
+          Authorization: 'Bearer ' + data.access_token,
         },
       })
       setArtists(artistList)

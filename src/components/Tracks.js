@@ -34,7 +34,7 @@ export const Tracks = () => {
       setToken(data.access_token)
 
       const test = await axios(
-        `https://api.spotify.com/v1/artists/${id}/albums`,
+        'https://api.spotify.com/v1/search?type=artist&q=Adele',
         {
           method: 'GET',
           headers: {

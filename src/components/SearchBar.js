@@ -12,8 +12,31 @@ import {
   FormHelperText,
   FormLabel,
   Input,
+  StatHelpText,
 } from '@chakra-ui/react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import {
+  alert,
+  clearAlert,
+  handleChange,
+  handleSubmit,
+} from '../features/searchBar/searchBarSlice'
+import Alert from './Alert'
+
 export const SearchBar = () => {
+  const dispatch = useDispatch()
+  const { searchValue, showAlert, alertMessage, isLoading, artistList } =
+    useSelector((state) => state.searchBar)
+
+  const clickSubmit = async () => {
+    dispatch(handleSubmit())
+    setTimeout(() => {
+      dispatch(clearAlert())
+    }, 2000)
+  }
+
+  console.log(searchValue)
   return (
     <ChakraProvider>
       <Flex justifyContent='center' mt={50}>
@@ -26,9 +49,16 @@ export const SearchBar = () => {
               <Input
                 type='email'
                 placeholder='Taylor Swift, Ed sheeran, Dua Lipa, etc...'
+                onChange={(e) => {
+                  dispatch(handleChange(e))
+                }}
               />
-              <Button bg={'#48BB78'}>Search</Button>
+
+              <Button bg={'#48BB78'} onClick={() => dispatch(clickSubmit())}>
+                Search
+              </Button>
             </Flex>
+            {showAlert && <Alert />}
           </FormControl>
         </Box>
       </Flex>
