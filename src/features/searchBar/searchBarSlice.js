@@ -1,16 +1,20 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 const initialState = {
-  searchValue: '',
+  searchValue: 'Adele',
   showAlert: false,
   alertMessage: '',
   isLoading: false,
-  artistList: [],
+  artistsList: [],
 }
 const searchBarSlice = createSlice({
   name: 'searchBar',
   initialState,
   reducers: {
+    setArtists: (state, action) => {
+      state.artistsList = action.payload
+      console.log(state.artistsList)
+    },
     handleSubmit: (state) => {
       console.log('submit')
       if (state.searchValue === '') {
@@ -29,4 +33,5 @@ const searchBarSlice = createSlice({
 
 console.log(searchBarSlice)
 export default searchBarSlice.reducer
-export const { handleChange, handleSubmit, clearAlert } = searchBarSlice.actions
+export const { handleChange, handleSubmit, clearAlert, setArtists } =
+  searchBarSlice.actions

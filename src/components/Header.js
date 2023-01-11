@@ -30,6 +30,11 @@ export const Header = () => {
               About
             </Text>
           </Button>
+          <Button>
+            <Text fontSize='xl' _hover={{ color: 'green' }}>
+              Login
+            </Text>
+          </Button>
           <Switch />
         </HStack>
       </Flex>

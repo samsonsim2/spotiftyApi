@@ -29,13 +29,6 @@ export const SearchBar = () => {
   const { searchValue, showAlert, alertMessage, isLoading, artistList } =
     useSelector((state) => state.searchBar)
 
-  const clickSubmit = async () => {
-    dispatch(handleSubmit())
-    setTimeout(() => {
-      dispatch(clearAlert())
-    }, 2000)
-  }
-
   console.log(searchValue)
   return (
     <ChakraProvider>
@@ -49,14 +42,11 @@ export const SearchBar = () => {
               <Input
                 type='email'
                 placeholder='Taylor Swift, Ed sheeran, Dua Lipa, etc...'
+                value={searchValue}
                 onChange={(e) => {
                   dispatch(handleChange(e))
                 }}
               />
-
-              <Button bg={'#48BB78'} onClick={() => dispatch(clickSubmit())}>
-                Search
-              </Button>
             </Flex>
             {showAlert && <Alert />}
           </FormControl>
