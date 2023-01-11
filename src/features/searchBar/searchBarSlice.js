@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 const initialState = {
-  searchValue: 'Adele',
+  searchValue: '',
   showAlert: false,
   alertMessage: '',
   isLoading: false,
